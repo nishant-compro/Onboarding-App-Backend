@@ -1,0 +1,29 @@
+openapi: 3.0.0
+info:
+  title: Onboarding App
+  description: Documentation of Onboarding app APIs
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/
+    description: Local Server
+paths:
+  /api/task:
+    get:
+      summary: Returns an array of task objects.
+      responses:
+        '200': 
+          description: A JSON array of tasks
+          content:
+            application/json:
+              schema: 
+                type: array
+  /api/task/{id}:
+    get:
+      summary: Returns a task by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+      responses: 
+        '200':
+          description: OK
