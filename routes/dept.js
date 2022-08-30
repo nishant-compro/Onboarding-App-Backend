@@ -39,8 +39,6 @@ router.put('/:id', (req, res) => {
     res.json(updatedDept);
     res.end();
   });
-  // .then((updatedDept) => res.json(updatedDept))
-  // .catch((err) => res.json(err));
 });
 router.delete('/:id', (req, res) => {
   Dept.findOneAndDelete({ _id: req.params.id }, (err, deletedDept) => {
@@ -58,8 +56,6 @@ router.delete('/:id', (req, res) => {
     res.json(deletedDept);
     res.end();
   });
-  // .then((deletedDept) => res.json(deletedDept))
-  // .catch((err) => res.json(err));
 });
 
 module.exports = router;
