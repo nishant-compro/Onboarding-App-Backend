@@ -1,0 +1,203 @@
+openapi: 3.0.0
+info:
+  title: Onboarding App
+  description: Documentation of Onboarding app APIs
+  version: 1.0.0
+servers:
+  - url: http://localhost:5000/
+    description: Local Server
+paths:
+  /api/task:
+    get:
+      tags:
+        - Task
+      summary: Returns an array of task objects.
+      responses:
+        '200': 
+          description: A JSON array of tasks
+          content:
+            application/json:
+              schema: 
+                type: array
+    post:
+      tags:
+        - Task
+      summary: Add a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: 
+                  type: string
+                assignee: 
+                  type: string
+                endDate: 
+                  type: string
+                department: 
+                  type: string
+                completed: 
+                  type: boolean
+                completedAt: 
+                  type: string
+                remarks: 
+                  type: string
+      responses: 
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '400':
+          description: Error, bad request
+  /api/task/{id}:
+    get:
+      tags:
+        - Task
+      summary: Returns a task by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+      responses: 
+        '200':
+          description: OK
+        '400':
+          description: Error, bad request
+        '404':
+          description: A task with the specified ID was not found.
+    put:
+      tags:
+        - Task
+      summary: Edit task details by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: 
+                  type: string
+                assignee: 
+                  type: string
+                endDate: 
+                  type: string
+                department: 
+                  type: string
+                completed: 
+                  type: boolean
+                completedAt: 
+                  type: string
+                remarks: 
+                  type: string
+      responses: 
+        '200':
+          description: Task updated
+        '400':
+          description: Error, bad request
+        '404':
+          description: A task with the specified ID was not found.
+    delete:
+      tags:
+        - Task
+      summary: Delete a task by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+      responses: 
+        '200':
+          description: Task deleted
+        '400':
+          description: Error, bad request
+        '404':
+          description: A task with the specified ID was not found.
+  
+    
+
+
+
+
+
+  /api/dept:
+    get:
+      tags:
+        - Department
+      summary: Returns an array of department objects.
+      responses:
+        '200': 
+          description: A JSON array of depts
+          content:
+            application/json:
+              schema: 
+                type: array
+    post:
+      tags:
+        - Department
+      summary: Add a new department
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                deptCode:
+                  type: string
+      responses: 
+        '200':
+          description: OK
+        '201':
+          description: Created
+        '400':
+          description: Error, bad request
+  /api/dept/{id}:
+    put:
+      tags:
+        - Department
+      summary: Edit department details by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: 
+                  type: string
+                deptCode:
+                  type: string
+      responses: 
+        '200':
+          description: Department updated
+        '400':
+          description: Error, bad request
+        '404':
+          description: A department with the specified ID was not found.
+    delete:
+      tags:
+        - Department
+      summary: Delete a department by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+      responses: 
+        '200':
+          description: Department deleted
+        '400':
+          description: Error, bad request
+        '404':
+          description: A department with the specified ID was not found.
